@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"**/*.ts\"",
-    "start": "ts-node -r tsconfig-paths/register console/main-backend.ts & ts-node -r tsconfig-paths/register console/main-webservice.ts",
+    "start": "fuser -k -n tcp 3000 & fuser -k -n tcp 4000 &  ts-node -r tsconfig-paths/register console/main-backend.ts & ts-node -r tsconfig-paths/register console/main-webservice.ts",
     "start:dev": "nodemon",
     "prestart:prod": "rm -rf dist && tsc",
     "start:prod": "node dist/main-backend.js",
@@ -24,6 +24,8 @@
     "hbs": "^4.0.1",
     "pg": "^7.4.3",
     "reflect-metadata": "^0.1.12",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
     "rxjs": "^6.0.0",
     "typeorm": "^0.2.6",
     "typescript": "^2.6.2"

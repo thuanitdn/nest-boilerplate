@@ -1,4 +1,5 @@
-import {Get, Controller, Render} from '@nestjs/common';
+import {Get, Post, Body, Controller, Render} from '@nestjs/common';
+import * as rp from 'request-promise';
 
 @Controller()
 export class AppController {
@@ -7,7 +8,19 @@ export class AppController {
 
   @Get()
   @Render('index')
-  root(): string {
-    return "";
+  root(): string {}
+
+  @Post('/login')
+  public async postLogin(@Body('email') email,
+                         @Body('password') password){
+    rp('http://www.google.com')
+      .then(function (htmlString) {
+        console.log(htmlString);
+        // Process html...
+      })
+      .catch(function (err) {
+        // Crawling failed...
+      });
+    return email;
   }
 }
