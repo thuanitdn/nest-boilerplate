@@ -1,0 +1,15 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "nest_boilerplate",
+  "entities": ["web-service/models/entity/**/**.entity{.ts,.js}"],
+  "synchronize": true,
+  "migrations": ["web-service/models/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "web-service/models/migrations",
+    "entitiesDir": "web-service/models/entity"
+  }
+}
